@@ -1,7 +1,7 @@
 import { gql } from "apollo-angular"
 
 export const GET_SEARCH_VALIDATE_EMAIL_QUERY = gql`
-query SearchIsEmailValid(email:string){
+query SearchIsEmailValid($email:String){
   searchIsEmailValid(email: $email){
     code
         error

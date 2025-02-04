@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { GET_SEARCH_VALIDATE_EMAIL_QUERY } from './graphql/search.graphql';
 import { Observable , of} from 'rxjs';
@@ -16,6 +16,7 @@ export class AppComponent {
   response!: Observable<any>
   errorMessage = '';
   emailForm: FormGroup;
+  isLoading = signal(false);
 
 
   constructor(public apollo: Apollo, private fb: FormBuilder) {
@@ -25,17 +26,27 @@ export class AppComponent {
   }
 
   validateEmail(email : string) {
+  this.isLoading.set(true)
     this.apollo.query({
       query: GET_SEARCH_VALIDATE_EMAIL_QUERY,
-      variables: { email }
-    }).subscribe((res) => {
+      variables: {email}
+    }).subscribe({  next : (res)=> {
       const response = res.data as any;
-      const data = Object.values(response.data) as any;
-      if(!data?.response.error){
+      const data = Object.values(response)[0] as any;
+      if(!data?.error){
         this.response = of(data?.data);
         return ;
       }
       this.errorMessage = data?.response?.message || 'An error occurred while validating the email';
+
+    },
+    error : (err) => {
+      console.log(err);
+      this.errorMessage = err.message || 'An error occurred while validating the email';
+    },
+    complete : ()=> {
+      this.isLoading.set(false)
+    }
 
 
     });
@@ -43,7 +54,6 @@ export class AppComponent {
 
 
   verifyEmail(){
-    if (this.emailForm.invalid) return;
     const email = this.emailForm.value.email;
     this.validateEmail(email)
 
