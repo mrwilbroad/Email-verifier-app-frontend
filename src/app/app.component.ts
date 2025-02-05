@@ -42,11 +42,13 @@ export class AppComponent {
     },
     error : (err) => {
       console.log(err);
-      this.errorMessage = err.message || 'An error occurred while validating the email';
+      this.isLoading.set(false)
+      this.errorMessage = "server not responding properly try again"
     },
     complete : ()=> {
+      console.log("is stoping")
       this.isLoading.set(false)
-    }
+    },
 
 
     });
@@ -54,6 +56,7 @@ export class AppComponent {
 
 
   verifyEmail(){
+    this.errorMessage = '';
     const email = this.emailForm.value.email;
     this.validateEmail(email)
 
