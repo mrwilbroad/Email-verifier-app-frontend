@@ -2,7 +2,6 @@ import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { NgModule } from '@angular/core';
 import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
-import { environment } from '../environment/environment';
 
 const uri = 'http://localhost:8080/graphql';
 

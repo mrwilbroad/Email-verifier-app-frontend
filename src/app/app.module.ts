@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GraphQLModule } from './graphql.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -15,9 +15,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     GraphQLModule,
     AppRoutingModule,
-    FormsModule, ReactiveFormsModule, HttpClientModule
+    FormsModule, ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    provideHttpClient()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
