@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
 
 
-//aws configuration 
-const uri = 'http://email-verifier-backend-env-1.eba-zmsy5ukp.us-east-1.elasticbeanstalk.com/api';
+//aws configuration
+const uri = 'http://email-verifier-backend-env-1.eba-zmsy5ukp.us-east-1.elasticbeanstalk.com/api/';
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   return {
