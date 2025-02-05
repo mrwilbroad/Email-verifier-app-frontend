@@ -1,7 +1,7 @@
 {
   "name": "email-verifier-app-frontend",
   "version": "0.0.0",
-  "homepage": "https://mrwilbroad.github.io/Email-verifier-app-frontend/",
+  "homepage": "https://mrwilbroad.github.io/email-verifier-app/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
