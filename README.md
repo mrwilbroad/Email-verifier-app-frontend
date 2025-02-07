@@ -20,8 +20,3 @@ This application provides a robust email verification
 - **Backend**: Deployed on AWS **Elastic Beanstalk**.
 - **Database**: Managed on **AWS RDS**.
 - **Frontend**: Built with **Angular** and communicates with the backend APIs.
-
-
----
-**Developed by Wilbroad Francis Mark** 🚀
-
