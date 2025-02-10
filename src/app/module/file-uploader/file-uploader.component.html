@@ -1,0 +1,15 @@
+<section>
+  <h1>File Uploader</h1>
+
+  <section class="h-60 w-60">
+    <img
+      class="h-full w-full rounded-full"
+      [src]="imgSrc ?? 'assets/images/userprofile.png'"
+    />
+  </section>
+  <input
+    class="p-2 rounded-lg mt-2 border border-amber-200"
+    type="file"
+    (change)="onFileSelected($event)"
+  />
+</section>
